@@ -17,13 +17,12 @@ class User
       return false;
     }
   }
-  public function create($name, $password, $conn)
+  public function create($name, $email, $conn)
   {
-    $sql = "SELECT * FROM `users` WHERE name = '" . $name . "' AND password = '" . $password . "'";
-    $result = mysqli_query($conn, $sql);
-    $rows = mysqli_fetch_all($result);;
-    if ($rows[0]) {
-      return $rows[0];
+    $sql = "INSERT INTO `users` (`name`, `email`) VALUES ('" . $name . "', '" . $email . "')";
+
+    if (mysqli_query($conn, $sql)) {
+      return true;
     } else {
       return false;
     }
@@ -44,8 +43,8 @@ class User
 
   public function update($id, $param, $value, $conn)
   {
-    $field_name = $param == 'p' ? "password" : "name";
-    $sql = "UPDATE users SET " . $field_name . " = $value WHERE users.id = $id";
+    $field_name = $param == 'e' ? "email" : "name";
+    $sql = "UPDATE users SET `$field_name` = '$value' WHERE `users`.`id` = $id";
 
     if (mysqli_query($conn, $sql)) {
       return true;
