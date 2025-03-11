@@ -6,8 +6,7 @@ class Post
 
   public function getAll($conn)
   {
-    $sql = "SELECT * FROM posts";
-    echo "$sql ;laofjd;l";
+    $sql = "SELECT * FROM `posts`";
 
     $result = mysqli_query($conn, $sql);
 
