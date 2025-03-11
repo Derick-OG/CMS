@@ -1,21 +1,16 @@
 <?php include "../includes/header.php" ?>
 
 
-
 <div class="container">
   <div class="row">
-    <div class="col-9">
-      <h1>Hello, User</h1>
+    <div class="col-12 mb-5">
+      <div class="row">
+        <div class="col offset-8"></div>
+        <div class="col-3">
+          <a href="#" class="btn btn-outline-success" style="margin-left: 10px">New Post</a>
+        </div>
+      </div>
     </div>
-    <div class="col-3">
-      <a href="#" class="btn btn-outline-success" style="margin-left: 10px">New Post</a>
-    </div>
-  </div>
-  <br />
-  <h3>Your Posts</h3>
-  <br />
-
-  <div class="row">
     <!-- Single Post Description -->
     <div class="col-12 shadow">
       <div class="py-3 pl-3">
@@ -60,18 +55,6 @@
       </div>
     </div>
     <!-- Single Post Description -->
-
-    <!-- View more -->
-    <div class="col-12 text-center mt-5" style="height: 50px">
-      <button class="btn btn-primary">View More...</button>
-    </div>
-    <!-- View more -->
-  </div>
-  <br />
-  <h3>Other Posts</h3>
-  <br />
-
-  <div class="row">
     <!-- Single Post Description -->
     <div class="col-12 shadow">
       <div class="py-3 pl-3">
@@ -124,8 +107,6 @@
     <!-- View more -->
   </div>
 </div>
-
-
 
 
 <?php include "../includes/footer.php" ?>
