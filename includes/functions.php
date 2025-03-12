@@ -43,5 +43,21 @@ function getPost($id)
 }
 function editPostWithUserId() {}
 function newPostWithUserId() {}
-function deletePostWithUserId() {}
+function deletePostWithUserId($post_id, $user_id)
+{
+  global $post_object;
+  global $user_object;
+  global $connection;
+
+  if ($p = $user_object->getOne($user_id, $connection)) {
+    if ($p[0][0] === $user_id) {
+      try {
+        return $post_object->delete($post_id, $connection);
+      } catch (Exception $e) {
+      }
+    }
+  } else {
+    return false;
+  }
+}
 function deleteAllPostsWithUserId() {}
