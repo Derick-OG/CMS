@@ -1,4 +1,11 @@
 <?php include "../includes/header.php" ?>
+<?php include "../includes/functions.php" ?>
+<?php
+
+$id = $id ?: 2;
+$data = getPost($id);
+// var_dump($data);
+?>
 
 
 
@@ -7,50 +14,28 @@
     <!-- Single Post Description -->
 
     <div class="col-12">
-      <h3>Post Title</h3>
+      <h3><?php echo $data["post"][1] ?></h3>
     </div>
     <div class="col-12">
       <div class="py-3 pl-3">
-        <img src="test-pexel.jpeg" alt="test-pexel.jpeg" width="100%" />
+        <img src="<?php echo $data["post"][2]; ?>" alt="<?php echo $data["post"][2]; ?>" width="100%" />
         <h6 class="text-decoration-underline">Description</h6>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-          beatae?
+          <?php echo $data["post"][3]; ?>
         </p>
 
         <h6 class="text-decoration-underline">Content</h6>
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Nostrum
-          alias iusto, voluptatum culpa sit libero modi, officiis quisquam
-          itaque aliquam voluptate praesentium? Nihil eligendi cum nam
-          distinctio eaque cupiditate accusantium optio id amet architecto
-          velit, magnam obcaecati nesciunt inventore ullam molestiae
-          recusandae veritatis commodi quod debitis. Delectus ea error
-          expedita architecto, assumenda doloremque alias maxime molestiae,
-          fuga omnis eum sed quia corporis deserunt sapiente? Eum hic
-          aspernatur, quo dolorum optio inventore obcaecati similique illo
-          iusto explicabo deleniti accusantium velit modi pariatur beatae
-          praesentium asperiores! Fugiat est unde molestiae neque placeat
-          tempora dolorum dolor veniam eum voluptatem provident ducimus,
-          deleniti accusamus, quam, quae rerum? Sit veniam pariatur sunt!
-          Labore, laborum ut veritatis consectetur nesciunt quaerat
-          molestias excepturi atque quis architecto aspernatur doloremque
-          quas modi? Sed aliquam nostrum nisi omnis blanditiis, nesciunt
-          facere ratione alias quibusdam nobis quas, tenetur aliquid
-          excepturi nulla. Modi error laboriosam debitis dolorem vitae
-          beatae obcaecati dolorum facilis animi rerum quas corrupti
-          consequuntur reprehenderit possimus consequatur temporibus illum,
-          dignissimos amet. Laudantium aliquam quos doloribus illum officiis
-          odit hic praesentium debitis, quae nam perspiciatis quo atque
-          nihil veniam ullam amet impedit mollitia commodi blanditiis.
-          Praesentium quisquam pariatur minus cupiditate inventore. Iste,
-          illum! Distinctio fuga expedita quibusdam aperiam obcaecati nam.
+          <?php  ?>
+        </p>
+        <p>
+          <?php echo $data["post"][4]; ?>
         </p>
 
         <div class="col-12 mt-5">
           <div class="row">
             <div class="col-9">
-              <span> Author: Theophilus Mbu </span>
+              <span> Author: <?php echo $data["author"] ?> </span>
             </div>
             <div class="col-3">
               <a href="#" class="btn btn-success">Edit</a>
