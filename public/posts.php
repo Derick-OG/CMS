@@ -35,14 +35,15 @@ if (isset($_POST['delete'])) {
           </p>
 
           <div class="row">
-            <div class="col-9">
+            <div class="col-7">
               <span> Author: <?php echo $posts['authors'][$counter];
                               $counter++; ?> </span>
             </div>
-            <form method="post" action="posts.php" class="col-3">
+            <form method="post" action="posts.php" class="col-5">
               <button href="#" class="btn btn-success">Edit</button>
               <button href="#" class="btn btn-danger" name="delete"
                 value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
+              <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
             </form>
           </div>
         </div>
