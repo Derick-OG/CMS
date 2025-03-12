@@ -1,5 +1,9 @@
 <?php include "../includes/header.php" ?>
+<?php include "../includes/functions.php" ?>
+<?php
 
+$posts = getAllPosts();
+?>
 
 <div class="container">
   <div class="row">
@@ -11,94 +15,35 @@
         </div>
       </div>
     </div>
-    <!-- Single Post Description -->
-    <div class="col-12 shadow">
-      <div class="py-3 pl-3">
-        <h3>Post Title</h3>
-        <h6 class="text-decoration-underline">Description</h6>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-          beatae?
-        </p>
 
-        <div class="row">
-          <div class="col-9">
-            <span> Author: Theophilus Mbu </span>
-          </div>
-          <div class="col-3">
-            <a href="#" class="btn btn-success">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
+    <?php $counter = 0 ?>
+    <?php foreach ($posts['posts'] as $post): ?>
+
+      <!-- Single Post Description -->
+      <div class="col-12 shadow">
+        <div class="py-3 pl-3">
+          <h3><?php echo $post[1] ?></h3>
+          <h6 class="text-decoration-underline">Description</h6>
+          <p>
+            <?php echo $post[3] ?>
+          </p>
+
+          <div class="row">
+            <div class="col-9">
+              <span> Author: <?php echo $posts['authors'][$counter];
+                              $counter++; ?> </span>
+            </div>
+            <div class="col-3">
+              <a href="#" class="btn btn-success">Edit</a>
+              <a href="#" class="btn btn-danger">Delete</a>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <!-- Single Post Description -->
-    <!-- Single Post Description -->
-    <div class="col-12 shadow">
-      <div class="py-3 pl-3">
-        <h3>Post Title</h3>
-        <h6 class="text-decoration-underline">Description</h6>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-          beatae?
-        </p>
+      <!-- Single Post Description -->
 
-        <div class="row">
-          <div class="col-9">
-            <span> Author: Theophilus Mbu </span>
-          </div>
-          <div class="col-3">
-            <a href="#" class="btn btn-success">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Single Post Description -->
-    <!-- Single Post Description -->
-    <div class="col-12 shadow">
-      <div class="py-3 pl-3">
-        <h3>Post Title</h3>
-        <h6 class="text-decoration-underline">Description</h6>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-          beatae?
-        </p>
+    <?php endforeach; ?>
 
-        <div class="row">
-          <div class="col-9">
-            <span> Author: Theophilus Mbu </span>
-          </div>
-          <div class="col-3">
-            <a href="#" class="btn btn-success">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Single Post Description -->
-    <!-- Single Post Description -->
-    <div class="col-12 shadow">
-      <div class="py-3 pl-3">
-        <h3>Post Title</h3>
-        <h6 class="text-decoration-underline">Description</h6>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam,
-          beatae?
-        </p>
-
-        <div class="row">
-          <div class="col-9">
-            <span> Author: Theophilus Mbu </span>
-          </div>
-          <div class="col-3">
-            <a href="#" class="btn btn-success">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Single Post Description -->
 
     <!-- View more -->
     <div class="col-12 text-center mt-5" style="height: 50px">
