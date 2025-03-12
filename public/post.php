@@ -2,9 +2,16 @@
 <?php include "../includes/functions.php" ?>
 <?php
 
-$id = $id ?: 2;
+$id = (int)base64_decode($_GET['d']) ?: 4;
 $data = getPost($id);
-// var_dump($data);
+
+
+if (isset($_POST['delete'])) {
+  $d = explode(',', base64_decode($_POST['delete']));
+  var_dump(deletePostWithUserId(...$d));
+  header("Location: /CMS/public/posts.php");
+}
+
 ?>
 
 
@@ -23,7 +30,10 @@ $data = getPost($id);
         <p>
           <?php echo $data["post"][3]; ?>
         </p>
-
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, omnis eaque quis, culpa sed maiores
+        similique sit voluptatibus perferendis repudiandae repellat, beatae quam. Veritatis omnis ut ipsum dicta
+        delectus doloremque odit, itaque praesentium repellendus, odio reiciendis mollitia laboriosam saepe sunt magni
+        iure fuga nisi recusandae a laborum molestiae! Itaque, tempore!
         <h6 class="text-decoration-underline">Content</h6>
         <p>
           <?php  ?>
@@ -37,10 +47,11 @@ $data = getPost($id);
             <div class="col-9">
               <span> Author: <?php echo $data["author"] ?> </span>
             </div>
-            <div class="col-3">
+            <form method="post" action="dashboard.php" class="col-3">
               <a href="#" class="btn btn-success">Edit</a>
-              <a href="#" class="btn btn-danger">Delete</a>
-            </div>
+              <button href="#" class="btn btn-danger" name="delete"
+                value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
+            </form>
           </div>
         </div>
       </div>
