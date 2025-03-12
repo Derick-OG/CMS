@@ -14,22 +14,22 @@
   <!-- Header -->
   <nav class="navbar navbar-expand shadow pt-4 pb-4 mb-5">
     <div class="container">
-      <a href="#" class="navbar-brand">Brand | User</a>
+      <a href="/CMS/public/index.php" class="navbar-brand">Brand | User</a>
       <ul class="navbar-nav">
         <li class="nav-item">
-          <a href="#" class="nav-link active" aria-current="page">Home</a>
+          <a href="/CMS/public/dashboard.php" class="nav-link active" aria-current="page">Home</a>
         </li>
 
         <li class="nav-item">
-          <a href="#" class="nav-link">Posts</a>
+          <a href="/CMS/public/posts.php" class="nav-link">Posts</a>
         </li>
 
         <li class="nav-item">
-          <a href="#" class="btn btn-primary">Login</a>
+          <a href="/CMS/public/login.php" class="btn btn-primary">Login</a>
         </li>
 
         <li class="nav-item">
-          <a href="#" class="btn btn-danger" style="margin-left: 10px">Logout</a>
+          <a href="/CMS/public/logout.php" class="btn btn-danger" style="margin-left: 10px">Logout</a>
         </li>
         <li class="nav-item">
           <a href="#" class="btn btn-success" style="margin-left: 10px">New Post</a>
