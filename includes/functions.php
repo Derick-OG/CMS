@@ -14,7 +14,21 @@ $post_object = new Post();
 
 function login() {}
 function logout() {}
-function getAllPosts() {}
+function getAllPosts()
+{
+
+  global $post_object;
+  global $user_object;
+  global $connection;
+
+  $posts = $post_object->getAll($connection) ?: false;
+  foreach ($posts as $post) {
+    $author_id = $post[5];
+    $authors[] = $user_object->getOne($author_id, $connection)[0][1] ?: false;
+  }
+
+  return ["posts" => $posts, "authors" => $authors];
+}
 function getPostsWithUserId() {}
 function getPost($id)
 {
