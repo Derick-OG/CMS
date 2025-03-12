@@ -3,6 +3,12 @@
 <?php
 
 $posts = getAllPosts();
+
+if (isset($_POST['delete'])) {
+  $d = explode(',', base64_decode($_POST['delete']));
+  var_dump(deletePostWithUserId(...$d));
+  header("Location: /CMS/public/posts.php");
+}
 ?>
 
 <div class="container">
@@ -33,10 +39,11 @@ $posts = getAllPosts();
               <span> Author: <?php echo $posts['authors'][$counter];
                               $counter++; ?> </span>
             </div>
-            <div class="col-3">
-              <a href="#" class="btn btn-success">Edit</a>
-              <a href="#" class="btn btn-danger">Delete</a>
-            </div>
+            <form method="post" action="posts.php" class="col-3">
+              <button href="#" class="btn btn-success">Edit</button>
+              <button href="#" class="btn btn-danger" name="delete"
+                value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
+            </form>
           </div>
         </div>
       </div>
