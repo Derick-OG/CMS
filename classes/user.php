@@ -17,10 +17,10 @@ class User
       return false;
     }
   }
-  public function create($name, $email, $conn)
+  public function create($name, $email, $password, $conn)
   {
-    $sql = "INSERT INTO `users` (`name`, `email`) VALUES ('" . $name . "', '" . $email . "')";
-
+    $sql = "INSERT INTO `users` (`name`, `email`, `password`) VALUES ('" . $name . "', '" . $email . "', '" . $password . "')";
+    var_dump($sql);
     if (mysqli_query($conn, $sql)) {
       return true;
     } else {
@@ -36,6 +36,21 @@ class User
     $rows = mysqli_fetch_all($result);
     if ($rows[0]) {
       return $rows;
+    } else {
+      return false;
+    }
+  }
+
+  public function loggable($email, $password, $conn)
+  {
+    $sql = "SELECT * FROM users WHERE `email`='$email' AND `password`='$password'";
+
+    var_dump($sql);
+    $result = mysqli_query($conn, $sql);
+
+    $rows = mysqli_fetch_all($result);
+    if ($rows[0]) {
+      return true;
     } else {
       return false;
     }
