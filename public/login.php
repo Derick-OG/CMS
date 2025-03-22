@@ -1,10 +1,24 @@
 <?php include "../includes/header.php" ?>
+<?php include "../includes/functions.php" ?>
+<?php
 
+if (isset($_POST['submit'])) {
+  $email = $_POST['user'];
+  $password = $_POST['password'];
+
+  if (login($email, $password)) {
+    header("Location: /CMS/public/dashboard.php");
+  } else {
+    echo "Error!";
+  }
+}
+
+?>
 
 <div class="container">
   <div class="shadow mx-auto pb-3" style="width: 350px; margin-bottom: 140px; margin-top: 140px">
     <div class="px-5 py-2">
-      <form action="login.html">
+      <form method="post" action="login.php">
         <br />
         <br />
         <!-- User input -->
@@ -25,7 +39,7 @@
         <br />
         <br />
         <!-- Login button -->
-        <a href="#" class="btn btn-primary btn-lg" style="margin-left: 90px">Login</a>
+        <button name="submit" class="btn btn-primary btn-lg" style="margin-left: 90px">Login</button>
       </form>
     </div>
   </div>
