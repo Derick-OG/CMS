@@ -12,7 +12,23 @@ $post_object = new Post();
 // echo "<br>";
 // var_dump($post_object->getAll($connection));
 
-function login() {}
+function register($name, $email, $password)
+{
+
+  global $user_object;
+  global $connection;
+  // var_dump($sql);
+
+  $user_object->create($name, $email, $password, $connection);
+}
+function login($email, $password)
+{
+
+  global $user_object;
+  global $connection;
+
+  return $user_object->loggable($email, $password, $connection);
+}
 function logout() {}
 function getAllPosts()
 {
@@ -41,8 +57,32 @@ function getPost($id)
   $author = $user_object->getOne($author_id, $connection)[0][1] ?: false;
   return ["post" => $post, "author" => $author];
 }
-function editPostWithUserId() {}
-function newPostWithUserId() {}
+function editPostWithUserId($post_id, $user_id)
+{
+
+  global $post_object;
+  global $user_object;
+  global $connection;
+  global $u_id;
+
+  if ($p = $user_object->getOne($user_id, $connection)) {
+    if ($user_id == $u_id) {
+      return $post_object->update($post_id, 'title', 'Edited Post', $connection);
+    }
+  }
+}
+function newPostWithUserId($title, $description, $content)
+{
+
+  global $post_object;
+  global $user_object;
+  global $connection;
+  global $u_id;
+
+  var_dump("ok");
+
+  return $post_object->create($title, "No image", $description, $content, $u_id, $connection);
+}
 function deletePostWithUserId($post_id, $user_id)
 {
   global $post_object;
