@@ -1,10 +1,22 @@
 <?php include "../includes/header.php" ?>
+<?php include "../includes/functions.php" ?>
 
+<?php
+
+if (isset($_POST['submit'])) {
+  $name = $_POST['name'];
+  $email = $_POST['email'];
+  $password = $_POST['password'];
+
+  register($name, $email, $password);
+}
+
+?>
 
 <div class="container">
   <div class="shadow mx-auto pb-3" style="width: 350px; margin-bottom: 140px; margin-top: 140px">
     <div class="px-5 py-2">
-      <form action="login.html">
+      <form method="post" action="register.php">
         <br />
         <br />
         <!-- Name and Email input -->
@@ -20,7 +32,7 @@
         <br />
         <br />
         <!-- Register button -->
-        <a href="" class="btn btn-primary btn-lg" style="margin-left: 80px">Register</a>
+        <button name="submit" class="btn btn-primary btn-lg" style="margin-left: 80px">Register</button>
       </form>
     </div>
   </div>
