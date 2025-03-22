@@ -6,8 +6,17 @@ $posts = getAllPosts();
 
 if (isset($_POST['delete'])) {
   $d = explode(',', base64_decode($_POST['delete']));
-  var_dump(deletePostWithUserId(...$d));
+  deletePostWithUserId($d[0], $d[1]);
   header("Location: /CMS/public/posts.php");
+}
+if (isset($_POST['edit'])) {
+  $d = explode(',', base64_decode($_POST['edit']));
+  editPostWithUserId($d[0], $d[1]);
+  header("Location: /CMS/public/posts.php");
+}
+if (isset($_POST['newpost'])) {
+  newPostWithUserId("New Post Title", "Some Description", "Some Content");
+  // header("Location: /CMS/public/posts.php");
 }
 ?>
 
@@ -17,7 +26,9 @@ if (isset($_POST['delete'])) {
       <div class="row">
         <div class="col offset-8"></div>
         <div class="col-3">
-          <a href="#" class="btn btn-outline-success" style="margin-left: 10px">New Post</a>
+          <form action="posts.php" method="post">
+            <button name="newpost" class="btn btn-outline-success" style="margin-left: 10px">New Post</button>
+          </form>
         </div>
       </div>
     </div>
@@ -40,7 +51,10 @@ if (isset($_POST['delete'])) {
                               $counter++; ?> </span>
             </div>
             <form method="post" action="posts.php" class="col-5">
-              <button href="#" class="btn btn-success">Edit</button>
+
+              <button href="#" class="btn btn-success" name="edit"
+                value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Edit</button>
+
               <button href="#" class="btn btn-danger" name="delete"
                 value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
               <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
