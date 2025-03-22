@@ -1,3 +1,8 @@
+<?php
+
+$u_id = 2;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
