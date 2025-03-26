@@ -2,17 +2,24 @@
 <?php include "../includes/functions.php" ?>
 <?php
 $message="";
+session_start();
+if (isset($_SESSION['status'])){
+  if($_SESSION['status']== 'logged in'){
+    $message= $_SESSION['message'];
+  }
+}
 
 if (isset($_POST['submit'])) {
   $email = $_POST['user'];
   $password = $_POST['password'];
-  if (login($email, $password)) {
-    header("Location: /CMS/public/dashboard.php");
+  
+  if(empty($email) && empty($password)){
+    $message= "Enter a valid Email/Password";
   } else {
-    if(empty($_POST['user'] && empty($_POST['password']))){
-   $message= "Enter a valid Email/Password";
-    }
+    if (login($email, $password)) {
+      header("Location: /CMS/public/dashboard.php");
   }
+}
 }
 
 ?>
@@ -30,13 +37,13 @@ if (isset($_POST['submit'])) {
         <br />
         <!-- User input -->
         <div class="form-floating">
-          <input type="text" name="user" id="user" class="form-control" placeholder="example@gmail.com" />
+          <input type="text" name="user" id="user" class="form-control" placeholder="example@gmail.com" required/>
           <label for="user" class="form-label">Email</label>
           <br />
         </div>
         <!-- Password input -->
         <div class="form-floating">
-          <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" />
+          <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" required/>
           <label for="password" class="form-label">Password</label>
           <br />
         </div>

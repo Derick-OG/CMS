@@ -42,15 +42,16 @@ class User
 
   public function loggable($email, $password, $conn)
   {
-    $sql = "SELECT * FROM users WHERE `email`='$email' AND `password`='$password'";
+    $sql = "SELECT * FROM `users` WHERE `email`='$email' AND `password`='$password'";
 
     $result = mysqli_query($conn, $sql);
-
+    
     $rows = mysqli_fetch_all($result);
-    if (array_key_exists(0,$rows)) {
-      return true;
-    } else {
+
+    if (empty($rows)) {
       return false;
+    } else {
+      return true;
     }
   }
 

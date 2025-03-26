@@ -29,7 +29,6 @@ function login($email, $password)
 
   global $user_object;
   global $connection;
-
   return $user_object->loggable($email, $password, $connection);
 }
 function logout() {}
