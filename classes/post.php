@@ -34,7 +34,7 @@ class Post
 
   public function getOne($id, $conn)
   {
-    $sql = "SELECT * FROM posts WHERE id=$id";
+    $sql = "SELECT * FROM `posts` WHERE `id`=$id";
 
     $result = mysqli_query($conn, $sql);
 
@@ -57,10 +57,10 @@ class Post
     }
   }
 
-  public function update($id, $field_name, $value, $conn)
+  public function update($id, $title, $image = null, $description, $content = null, $conn)
   {
-    $sql = "UPDATE posts SET `$field_name` = '$value' WHERE `posts`.`id` = $id";
-
+    $sql = "UPDATE `posts` SET `title`='$title', `image`='$image', `description`='$description', `content`='$content' WHERE `posts`.`id` = $id";
+    var_dump($sql);
     if (mysqli_query($conn, $sql)) {
       return true;
     } else {
