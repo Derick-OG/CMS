@@ -62,6 +62,7 @@ if (isset($_POST['delete'])) {
   </div>
 </div>
 
+<?php include "../public/modal.php" ?>
 
 
 <?php include "../includes/footer.php" ?>
