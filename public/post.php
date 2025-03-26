@@ -13,7 +13,27 @@ if (isset($_POST['delete'])) {
   header("Location: /CMS/public/posts.php");
 }
 
+if (isset($_POST['newpost'])) {
+  $title = $_POST['title'];
+  $image  = $_POST['image'];
+  $description = $_POST['description'];
+  $content = $_POST['content'];
+
+  newPostWithUserId($id, $user_id, "$title","$image", "$description", "$content");
+  header("Location: /CMS/public/posts.php");
+}
+if (isset($_POST['edit'])) {
+  $d = explode(',', base64_decode($_POST['edit']));
+  $title = $_POST['title'];
+  $image  = $_POST['image'];
+  $description = $_POST['description'];
+  $content = $_POST['content'];
+
+  editPostWithUserId($d[0], $d[1],"$title","$image", "$description", "$content");
+  header("Location: /CMS/public/posts.php");
+}
 ?>
+
 
 
 
