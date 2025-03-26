@@ -1,14 +1,46 @@
+
+
 <?php include "../includes/header.php" ?>
+<?php include "../includes/functions.php" ?>
 
+<?php
 
+if (isset($_POST['delete'])) {
+  $d = explode(',', base64_decode($_POST['delete']));
+  var_dump(deletePostWithUserId(...$d));
+  header("Location: /CMS/public/posts.php");
+}
 
+if (isset($_POST['newpost'])) {
+  $title = $_POST['title'];
+  $image  = $_POST['image'];
+  $description = $_POST['description'];
+  $content = $_POST['content'];
+
+  newPostWithUserId("$title","$image", "$description", "$content");
+  header("Location: /CMS/public/posts.php");
+}
+
+if (isset($_POST['edit'])) {
+  $d = explode(',', base64_decode($_POST['edit']));
+  $title = $_POST['title'];
+  $image  = $_POST['image'];
+  $description = $_POST['description'];
+  $content = $_POST['content'];
+
+  editPostWithUserId($d[0], $d[1],"$title","$image", "$description", "$content");
+  header("Location: /CMS/public/posts.php");
+}
+?>
 <div class="container">
   <div class="row">
     <div class="col-9">
       <h1>Hello, User</h1>
     </div>
     <div class="col-3">
-      <a href="#" class="btn btn-outline-success" style="margin-left: 10px">New Post</a>
+      <button class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#myModal1">
+        New Post
+      </button>
     </div>
   </div>
   <br />
@@ -27,12 +59,20 @@
         </p>
 
         <div class="row">
-          <div class="col-9">
+          <div class="col-6">
             <span> Author: Theophilus Mbu </span>
           </div>
-          <div class="col-3">
-            <a href="#" class="btn btn-success">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
+
+          <div class="col-6 d-flex">
+            <button class="btn btn-success wl-2" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#myModal2">
+              Edit
+            </button>
+            <form method="post" action="dashboard.php">
+              <button class="btn btn-danger" name="delete"
+                value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
+            </form>
+            <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
           </div>
         </div>
       </div>
@@ -49,12 +89,20 @@
         </p>
 
         <div class="row">
-          <div class="col-9">
+          <div class="col-6">
             <span> Author: Theophilus Mbu </span>
           </div>
-          <div class="col-3">
-            <a href="#" class="btn btn-success">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
+
+          <div class="col-6 d-flex">
+            <button class="btn btn-success wl-2" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#myModal2">
+              Edit
+            </button>
+            <form method="post" action="dashboard.php">
+              <button class="btn btn-danger" name="delete"
+                value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
+            </form>
+            <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
           </div>
         </div>
       </div>
@@ -83,12 +131,20 @@
         </p>
 
         <div class="row">
-          <div class="col-9">
+          <div class="col-6">
             <span> Author: Theophilus Mbu </span>
           </div>
-          <div class="col-3">
-            <a href="#" class="btn btn-success">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
+
+          <div class="col-6 d-flex">
+            <button class="btn btn-success wl-2" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#myModal2">
+              Edit
+            </button>
+            <form method="post" action="dashboard.php">
+              <button class="btn btn-danger" name="delete"
+                value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
+            </form>
+            <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
           </div>
         </div>
       </div>
@@ -105,12 +161,20 @@
         </p>
 
         <div class="row">
-          <div class="col-9">
+          <div class="col-6">
             <span> Author: Theophilus Mbu </span>
           </div>
-          <div class="col-3">
-            <a href="#" class="btn btn-success">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
+
+          <div class="col-6 d-flex">
+            <button class="btn btn-success wl-2" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#myModal2">
+              Edit
+            </button>
+            <form method="post" action="dashboard.php">
+              <button class="btn btn-danger" name="delete"
+                value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
+            </form>
+            <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
           </div>
         </div>
       </div>
@@ -125,6 +189,7 @@
   </div>
 </div>
 
+<?php include "../public/modal.php" ?>
 
 
 

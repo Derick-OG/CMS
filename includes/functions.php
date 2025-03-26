@@ -59,7 +59,7 @@ function getPost($id)
   $author = $user_object->getOne($author_id, $connection)[0][1] ?: false;
   return ["post" => $post, "author" => $author];
 }
-function editPostWithUserId($post_id, $user_id)
+function editPostWithUserId($id, $user_id,  $title, $image, $description, $content,)
 {
 
   global $post_object;
@@ -67,13 +67,13 @@ function editPostWithUserId($post_id, $user_id)
   global $connection;
   global $u_id;
 
-  if ($p = $user_object->getOne($user_id, $connection)) {
-    if ($user_id == $u_id) {
-      return $post_object->update($post_id, 'title', 'Edited Post', $connection);
-    }
-  }
+  return $post_object->update($id, $title, $image, $description, $content, $connection);
+  // if ($p = $user_object->getOne($user_id, $connection)) {
+  //   if ($user_id == $u_id) {
+  //   }
+  // }
 }
-function newPostWithUserId($title, $description, $content)
+function newPostWithUserId($title, $image, $description, $content)
 {
 
   global $post_object;
@@ -81,7 +81,6 @@ function newPostWithUserId($title, $description, $content)
   global $connection;
   global $u_id;
 
-  var_dump("ok");
 
   return $post_object->create($title, "No image", $description, $content, $u_id, $connection);
 }

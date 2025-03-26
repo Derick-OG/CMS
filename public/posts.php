@@ -9,14 +9,24 @@ if (isset($_POST['delete'])) {
   deletePostWithUserId($d[0], $d[1]);
   header("Location: /CMS/public/posts.php");
 }
-if (isset($_POST['edit'])) {
-  $d = explode(',', base64_decode($_POST['edit']));
-  editPostWithUserId($d[0], $d[1]);
+if (isset($_POST['newpost'])) {
+  $title = $_POST['title'];
+  $image  = $_POST['image'];
+  $description = $_POST['description'];
+  $content = $_POST['content'];
+
+  newPostWithUserId("$title","$image", "$description", "$content");
   header("Location: /CMS/public/posts.php");
 }
-if (isset($_POST['newpost'])) {
-  newPostWithUserId("New Post Title", "Some Description", "Some Content");
-  // header("Location: /CMS/public/posts.php");
+if (isset($_POST['edit'])) {
+  $d = explode(',', base64_decode($_POST['edit']));
+  $title = $_POST['title'];
+  $image  = $_POST['image'];
+  $description = $_POST['description'];
+  $content = $_POST['content'];
+
+  editPostWithUserId($d[0], $d[1],"$title","$image", "$description", "$content");
+  header("Location: /CMS/public/posts.php");
 }
 ?>
 
@@ -26,9 +36,9 @@ if (isset($_POST['newpost'])) {
       <div class="row">
         <div class="col offset-8"></div>
         <div class="col-3">
-          <form action="posts.php" method="post">
-            <button name="newpost" class="btn btn-outline-success" style="margin-left: 10px">New Post</button>
-          </form>
+          <button class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#myModal1">
+            New Post
+          </button>
         </div>
       </div>
     </div>
@@ -46,19 +56,21 @@ if (isset($_POST['newpost'])) {
           </p>
 
           <div class="row">
-            <div class="col-7">
+            <div class="col-6">
               <span> Author: <?php echo $posts['authors'][$counter];
                               $counter++; ?> </span>
             </div>
-            <form method="post" action="posts.php" class="col-5">
-
-              <button href="#" class="btn btn-success" name="edit"
-                value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Edit</button>
-
-              <button href="#" class="btn btn-danger" name="delete"
-                value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
+            <div class="col-6 d-flex">
+              <button class="btn btn-success wl-2" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#myModal2">
+                Edit
+              </button>
+              <form method="post" action="dashboard.php">
+                <button class="btn btn-danger" name="delete"
+                  value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
+              </form>
               <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
-            </form>
+            </div>
           </div>
         </div>
       </div>
@@ -74,6 +86,9 @@ if (isset($_POST['newpost'])) {
     <!-- View more -->
   </div>
 </div>
+
+<?php include "../public/modal.php" ?>
+
 
 
 <?php include "../includes/footer.php" ?>

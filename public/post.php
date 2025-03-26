@@ -2,8 +2,9 @@
 <?php include "../includes/functions.php" ?>
 <?php
 
-$id = (int)base64_decode($_GET['d']) ?: 4;
+$id = (int)base64_decode($_GET['d']) ?: 1;
 $data = getPost($id);
+
 
 
 if (isset($_POST['delete'])) {
@@ -12,7 +13,27 @@ if (isset($_POST['delete'])) {
   header("Location: /CMS/public/posts.php");
 }
 
+if (isset($_POST['newpost'])) {
+  $title = $_POST['title'];
+  $image  = $_POST['image'];
+  $description = $_POST['description'];
+  $content = $_POST['content'];
+
+  newPostWithUserId($id, $user_id, "$title","$image", "$description", "$content");
+  header("Location: /CMS/public/posts.php");
+}
+if (isset($_POST['edit'])) {
+  $d = explode(',', base64_decode($_POST['edit']));
+  $title = $_POST['title'];
+  $image  = $_POST['image'];
+  $description = $_POST['description'];
+  $content = $_POST['content'];
+
+  editPostWithUserId($d[0], $d[1],"$title","$image", "$description", "$content");
+  header("Location: /CMS/public/posts.php");
+}
 ?>
+
 
 
 
@@ -30,10 +51,6 @@ if (isset($_POST['delete'])) {
         <p>
           <?php echo $data["post"][3]; ?>
         </p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusantium, omnis eaque quis, culpa sed maiores
-        similique sit voluptatibus perferendis repudiandae repellat, beatae quam. Veritatis omnis ut ipsum dicta
-        delectus doloremque odit, itaque praesentium repellendus, odio reiciendis mollitia laboriosam saepe sunt magni
-        iure fuga nisi recusandae a laborum molestiae! Itaque, tempore!
         <h6 class="text-decoration-underline">Content</h6>
         <p>
           <?php  ?>
@@ -44,14 +61,19 @@ if (isset($_POST['delete'])) {
 
         <div class="col-12 mt-5">
           <div class="row">
-            <div class="col-9">
+            <div class="col-3">
               <span> Author: <?php echo $data["author"] ?> </span>
             </div>
-            <form method="post" action="dashboard.php" class="col-3">
-              <a href="#" class="btn btn-success">Edit</a>
-              <button href="#" class="btn btn-danger" name="delete"
-                value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
-            </form>
+            <div class="col-9">
+
+              <button class="btn btn-success wl-2" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#myModal2">
+                Edit</button>
+              <form method="post" action="dashboard.php">
+                <button class="btn btn-danger" name="delete"
+                  value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
+              </form>
+            </div>
           </div>
         </div>
       </div>
@@ -60,6 +82,7 @@ if (isset($_POST['delete'])) {
   </div>
 </div>
 
+<?php include "../public/modal.php" ?>
 
 
 <?php include "../includes/footer.php" ?>
