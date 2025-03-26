@@ -1,15 +1,17 @@
 <?php include "../includes/header.php" ?>
 <?php include "../includes/functions.php" ?>
 <?php
+$message="";
 
 if (isset($_POST['submit'])) {
   $email = $_POST['user'];
   $password = $_POST['password'];
-
   if (login($email, $password)) {
     header("Location: /CMS/public/dashboard.php");
   } else {
-    echo "Error!";
+    if(empty($_POST['user'] && empty($_POST['password']))){
+   $message= "Enter a valid Email/Password";
+    }
   }
 }
 
@@ -20,16 +22,21 @@ if (isset($_POST['submit'])) {
     <div class="px-5 py-2">
       <form method="post" action="login.php">
         <br />
+        <?php
+        
+        echo '<span style= "color:red;">' . $message .   '</span>';
+        $message= "";
+        ?>
         <br />
         <!-- User input -->
         <div class="form-floating">
-          <input type="text" name="user" id="user" class="form-control" placeholder="Name or Email" />
-          <label for="user" class="form-label">Name or Email</label>
+          <input type="text" name="user" id="user" class="form-control" placeholder="example@gmail.com" />
+          <label for="user" class="form-label">Email</label>
           <br />
         </div>
         <!-- Password input -->
         <div class="form-floating">
-          <input type="password" name="password" id="password" class="form-control" placeholder="Password" />
+          <input type="password" name="password" id="password" class="form-control" placeholder="Enter your password" />
           <label for="password" class="form-label">Password</label>
           <br />
         </div>

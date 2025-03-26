@@ -45,11 +45,10 @@ class User
   {
     $sql = "SELECT * FROM users WHERE `email`='$email' AND `password`='$password'";
 
-    var_dump($sql);
     $result = mysqli_query($conn, $sql);
 
     $rows = mysqli_fetch_all($result);
-    if ($rows[0]) {
+    if (array_key_exists(0,$rows)) {
       return true;
     } else {
       return false;
