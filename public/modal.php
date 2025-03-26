@@ -3,7 +3,7 @@
     <div class="modal-content">
       <div class="modal-header">
         <h3>New Post Details</h3>
-        <button class="btn-close" data-bs-dismiss="modal" data-bs-target="#modal"></button>
+        <button class="btn-close" data-bs-dismiss="modal" data-bs-target="#myModal1"></button>
       </div>
       <div class="modal-body">
         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
@@ -26,11 +26,12 @@
     </div>
   </div>
 </div>
+
 <div class="modal fade" id="myModal2">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">Edit Post Details
-        <button class="btn-close" data-bs-dismiss="modal" data-bs-target="#modal"></button>
+        <button class="btn-close" data-bs-dismiss="modal" data-bs-target="#myModal2"></button>
       </div>
       <div class="modal-body">
         <form action="<?php echo $_SERVER["PHP_SELF"]; ?>" method="post">
