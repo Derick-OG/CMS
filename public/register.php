@@ -2,13 +2,19 @@
 <?php include "../includes/functions.php" ?>
 
 <?php
+$message="";
+?>
+<?php
 
 if (isset($_POST['submit'])) {
   $name = $_POST['name'];
   $email = $_POST['email'];
   $password = $_POST['password'];
 
-  register($name, $email, $password);
+  if(register($name, $email, $password)){
+    header('Location: login.php');
+  }
+  $message="Account Created Successfully";
 }
 
 ?>
@@ -18,6 +24,9 @@ if (isset($_POST['submit'])) {
     <div class="px-5 py-2">
       <form method="post" action="register.php">
         <br />
+        <?php
+        echo '<span style= color:green>' . $message . '</span>';
+        ?>
         <br />
         <!-- Name and Email input -->
         <label for="name">Name</label>

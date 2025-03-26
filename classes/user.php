@@ -20,7 +20,6 @@ class User
   public function create($name, $email, $password, $conn)
   {
     $sql = "INSERT INTO `users` (`name`, `email`, `password`) VALUES ('" . $name . "', '" . $email . "', '" . $password . "')";
-    var_dump($sql);
     if (mysqli_query($conn, $sql)) {
       return true;
     } else {

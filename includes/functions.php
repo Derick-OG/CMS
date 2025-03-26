@@ -18,8 +18,11 @@ function register($name, $email, $password)
   global $user_object;
   global $connection;
   // var_dump($sql);
-
-  $user_object->create($name, $email, $password, $connection);
+  if($user_object->create($name, $email, $password, $connection)) {
+    return true;}
+    else{
+      return false;
+    }
 }
 function login($email, $password)
 {
