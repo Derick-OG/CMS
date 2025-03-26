@@ -8,7 +8,9 @@
       <h1>Hello, User</h1>
     </div>
     <div class="col-3">
-      <a href="#" class="btn btn-outline-success" style="margin-left: 10px">New Post</a>
+      <button class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#myModal1">
+        New Post
+      </button>
     </div>
   </div>
   <br />
@@ -31,8 +33,13 @@
             <span> Author: Theophilus Mbu </span>
           </div>
           <div class="col-3">
-            <a href="#" class="btn btn-success">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
+            <button class="btn btn-success wl-2" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#myModal2">
+                Edit</button>
+              <form method="post" action="dashboard.php">
+                <button class="btn btn-danger" name="delete"
+                  value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
+              </form>
           </div>
         </div>
       </div>
@@ -53,8 +60,13 @@
             <span> Author: Theophilus Mbu </span>
           </div>
           <div class="col-3">
-            <a href="#" class="btn btn-success">Edit</a>
-            <a href="#" class="btn btn-danger">Delete</a>
+            <button class="btn btn-success wl-2" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#myModal2">
+                Edit</button>
+              <form method="post" action="dashboard.php">
+                <button class="btn btn-danger" name="delete"
+                  value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
+              </form>
           </div>
         </div>
       </div>

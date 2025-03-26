@@ -27,7 +27,9 @@ if (isset($_POST['newpost'])) {
         <div class="col offset-8"></div>
         <div class="col-3">
           <form action="posts.php" method="post">
-            <button name="newpost" class="btn btn-outline-success" style="margin-left: 10px">New Post</button>
+            <button class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#myModal1">
+        New Post
+      </button>
           </form>
         </div>
       </div>
@@ -52,13 +54,15 @@ if (isset($_POST['newpost'])) {
             </div>
             <form method="post" action="posts.php" class="col-5">
 
-              <button href="#" class="btn btn-success" name="edit"
-                value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Edit</button>
-
-              <button href="#" class="btn btn-danger" name="delete"
-                value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
-              <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
+              <button class="btn btn-success wl-2" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#myModal2">
+                Edit</button>
             </form>
+              <form method="post" action="dashboard.php">
+                <button class="btn btn-danger" name="delete"
+                  value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
+              </form>
+              <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
           </div>
         </div>
       </div>

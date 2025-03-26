@@ -47,10 +47,12 @@ if (isset($_POST['delete'])) {
             <div class="col-9">
               <span> Author: <?php echo $data["author"] ?> </span>
             </div>
-            <form method="post" action="dashboard.php" class="col-3">
-              <a href="#" class="btn btn-success">Edit</a>
-              <button href="#" class="btn btn-danger" name="delete"
-                value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
+            <button class="btn btn-success wl-2" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                data-bs-target="#myModal2">
+                Edit</button>
+              <form method="post" action="dashboard.php">
+                <button class="btn btn-danger" name="delete"
+                  value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
             </form>
           </div>
         </div>
