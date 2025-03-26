@@ -20,7 +20,7 @@
           <textarea type="text" name="content" id="content" class="form-control"
             style="width:450px; height: 100px;"></textarea>
           <br>
-          <button type="submit" name="submit-newmodal" class="btn btn-success">Create New Post</button>
+          <button type="submit" name="newpost" class="btn btn-success">Create New Post</button>
         </form>
       </div>
     </div>

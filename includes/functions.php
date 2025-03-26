@@ -29,7 +29,6 @@ function login($email, $password)
 
   global $user_object;
   global $connection;
-
   return $user_object->loggable($email, $password, $connection);
 }
 function logout() {}
@@ -74,7 +73,7 @@ function editPostWithUserId($id, $user_id,  $title, $image, $description, $conte
   //   }
   // }
 }
-function newPostWithUserId($title, $description, $content)
+function newPostWithUserId($title, $image, $description, $content)
 {
 
   global $post_object;
@@ -82,7 +81,6 @@ function newPostWithUserId($title, $description, $content)
   global $connection;
   global $u_id;
 
-  var_dump("ok");
 
   return $post_object->create($title, "No image", $description, $content, $u_id, $connection);
 }
