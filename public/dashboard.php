@@ -29,20 +29,17 @@
         </p>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-9">
             <span> Author: Theophilus Mbu </span>
           </div>
-
-          <div class="col-6 d-flex">
-            <button class="btn btn-success wl-2" class="btn btn-primary" data-bs-toggle="modal"
-              data-bs-target="#myModal2">
-              Edit
-            </button>
-            <form method="post" action="dashboard.php">
+          <div class="col-3">
+            <button class="btn btn-success wl-2" type="button" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#myModal2" value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>>
+              Edit</button>
+            <form method=" post" action="dashboard.php">
               <button class="btn btn-danger" name="delete"
                 value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
-            </form>
-            <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
+              </form>
           </div>
         </div>
       </div>
@@ -59,20 +56,17 @@
         </p>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-9">
             <span> Author: Theophilus Mbu </span>
           </div>
-
-          <div class="col-6 d-flex">
-            <button class="btn btn-success wl-2" class="btn btn-primary" data-bs-toggle="modal"
-              data-bs-target="#myModal2">
-              Edit
-            </button>
-            <form method="post" action="dashboard.php">
+          <div class="col-3">
+            <button class="btn btn-success wl-2" type="button" class="btn btn-primary" data-bs-toggle="modal"
+              data-bs-target="#myModal2" value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>>
+              Edit</button>
+            <form method=" post" action="dashboard.php">
               <button class="btn btn-danger" name="delete"
                 value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
-            </form>
-            <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
+              </form>
           </div>
         </div>
       </div>
@@ -101,20 +95,20 @@
         </p>
 
         <div class="row">
-          <div class="col-6">
+          <div class="col-9">
             <span> Author: Theophilus Mbu </span>
           </div>
 
           <div class="col-6 d-flex">
             <button class="btn btn-success wl-2" class="btn btn-primary" data-bs-toggle="modal"
-              data-bs-target="#myModal2">
+              data-bs-target="#myModal2" value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>>
               Edit
             </button>
-            <form method="post" action="dashboard.php">
+            <form method=" post" action="dashboard.php">
               <button class="btn btn-danger" name="delete"
                 value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
-            </form>
-            <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
+              </form>
+              <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
           </div>
         </div>
       </div>
@@ -137,14 +131,14 @@
 
           <div class="col-6 d-flex">
             <button class="btn btn-success wl-2" class="btn btn-primary" data-bs-toggle="modal"
-              data-bs-target="#myModal2">
+              data-bs-target="#myModal2" value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>>
               Edit
             </button>
-            <form method="post" action="dashboard.php">
+            <form method=" post" action="dashboard.php">
               <button class="btn btn-danger" name="delete"
                 value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
-            </form>
-            <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
+              </form>
+              <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
           </div>
         </div>
       </div>

@@ -47,12 +47,12 @@ if (isset($_POST['delete'])) {
             <div class="col-9">
 
               <button class="btn btn-success wl-2" type="button" class="btn btn-primary" data-bs-toggle="modal"
-                data-bs-target="#myModal2">
+                data-bs-target="#myModal2" value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>>
                 Edit</button>
-              <form method="post" action="dashboard.php">
+              <form method=" post" action="dashboard.php">
                 <button class="btn btn-danger" name="delete"
                   value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
-              </form>
+                </form>
             </div>
           </div>
         </div>
