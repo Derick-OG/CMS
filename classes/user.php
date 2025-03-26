@@ -29,7 +29,7 @@ class User
   }
   public function getOne($id, $conn)
   {
-    $sql = "SELECT * FROM users WHERE id=$id";
+    $sql = "SELECT * FROM `users` WHERE `id`=$id";
 
     $result = mysqli_query($conn, $sql);
 

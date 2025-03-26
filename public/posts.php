@@ -11,7 +11,7 @@ if (isset($_POST['delete'])) {
 }
 if (isset($_POST['edit'])) {
   $d = explode(',', base64_decode($_POST['edit']));
-  editPostWithUserId($d[0], $d[1]);
+  editPostWithUserId($d[0], $d[1], "New Post Title",'NO IMAGE', "Some Description", "Some Content");
   header("Location: /CMS/public/posts.php");
 }
 if (isset($_POST['newpost'])) {
