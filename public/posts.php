@@ -11,7 +11,7 @@ if (isset($_POST['delete'])) {
 }
 if (isset($_POST['edit'])) {
   $d = explode(',', base64_decode($_POST['edit']));
-  editPostWithUserId($d[0], $d[1], "New Post Title",'NO IMAGE', "Some Description", "Some Content");
+  editPostWithUserId($d[0], $d[1], "New Post Title", 'NO IMAGE', "Some Description", "Some Content");
   header("Location: /CMS/public/posts.php");
 }
 if (isset($_POST['newpost'])) {
@@ -28,8 +28,8 @@ if (isset($_POST['newpost'])) {
         <div class="col-3">
           <form action="posts.php" method="post">
             <button class="btn btn-outline-success" type="button" data-bs-toggle="modal" data-bs-target="#myModal1">
-        New Post
-      </button>
+              New Post
+            </button>
           </form>
         </div>
       </div>
@@ -48,21 +48,24 @@ if (isset($_POST['newpost'])) {
           </p>
 
           <div class="row">
-            <div class="col-7">
+            <div class="col-6">
               <span> Author: <?php echo $posts['authors'][$counter];
                               $counter++; ?> </span>
             </div>
-            <form method="post" action="posts.php" class="col-5">
+            <div class="col-6 d-flex">
 
-              <button class="btn btn-success wl-2" type="button" class="btn btn-primary" data-bs-toggle="modal"
-                data-bs-target="#myModal2">
-                Edit</button>
-            </form>
+              <form method="post" action="posts.php">
+
+                <button class="btn btn-success wl-2" type="button" class="btn btn-primary" data-bs-toggle="modal"
+                  data-bs-target="#myModal2">
+                  Edit</button>
+              </form>
               <form method="post" action="dashboard.php">
                 <button class="btn btn-danger" name="delete"
                   value="<?php echo base64_encode($post[0] . "," . $post[5]) ?>">Delete</button>
               </form>
               <a href="post.php?d=<?php echo base64_encode($post[0]) ?>" class="btn btn-primary">View More</a>
+            </div>
           </div>
         </div>
       </div>
